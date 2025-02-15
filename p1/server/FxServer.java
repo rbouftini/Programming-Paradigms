@@ -2,7 +2,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.io.DataOutputStream;
 
-public class HelloWorldServer {
+public class FxServer {
     public static final int port = 5000;  
     public static void main(String[] args) throws Exception{
         // Server needs to request a port number from the OS through the Socket API
