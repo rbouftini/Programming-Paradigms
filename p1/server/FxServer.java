@@ -25,10 +25,25 @@ public class FxServer {
                             out.write(bytes); 
                         }
                         catch(Exception e){
-                            System.out.println("Not found");
+                            out.write("NOT FOUND\n".getBytes());
                         }
                     }
-                        
+                    else if(tokens[0].equals("upload")){
+                        String file_name = tokens[1];
+                        int file_size = Integer.parseInt(tokens[2]);
+                        byte[] bytes = in.readNBytes(file_size);
+                        try (FileOutputStream fileOut = new FileOutputStream(file_name)){
+                            fileOut.write(bytes);
+                            out.write("STORED\n".getBytes());
+                        }
+                        catch(Exception e){
+                            out.write("FAILED\n".getBytes());
+                        }
+                    }
+                    else {
+                        System.out.println("Client is not using the right protocol");
+                    }
+
                 }
             }
         }
